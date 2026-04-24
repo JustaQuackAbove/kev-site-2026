@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Click Motion | Square Motion Lab</title>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <p class="eyebrow">Click Page</p>
+        <h1>Tap a square and watch it react.</h1>
+        <p class="intro">
+          This page focuses only on click-triggered motion. Each square uses
+          the same reusable effect classes you already have on the home page.
+        </p>
+        <pre class="snippet"><code>&lt;div class="motion-box animate-on-click effect-spin"
+  data-rotation="270"
+  data-duration="500"&gt;&lt;/div&gt;</code></pre>
+      </section>
+
+      <section class="demo-section">
+        <div class="section-heading">
+          <p class="section-label">Examples</p>
+          <h2>Mix and match click effects.</h2>
+        </div>
+
+        <div class="demo-grid">
+          <article class="demo-card">
+            <div
+              class="motion-box tone-coral animate-on-click effect-slide"
+              data-slide-x="-160"
+              data-duration="300"
+              aria-label="Fast slide on click"
+            ></div>
+            <h3>Fast Slide</h3>
+            <p><code>data-slide-x="160"</code></p>
+          </article>
+
+          <article class="demo-card">
+            <div
+              class="motion-box tone-sky animate-on-click effect-grow"
+              data-scale="1.5"
+              data-duration="240"
+              aria-label="Grow on click"
+            ></div>
+            <h3>Big Grow</h3>
+            <p><code>data-scale="1.5"</code></p>
+          </article>
+
+          <article class="demo-card">
+            <div
+              class="motion-box tone-plum animate-on-click effect-spin"
+              data-rotation="270"
+              data-duration="500"
+              aria-label="Spin on click"
+            ></div>
+            <h3>Quarter Turn</h3>
+            <p><code>data-rotation="270"</code></p>
+          </article>
+
+          <article class="demo-card">
+            <div
+              class="motion-box tone-mint animate-on-click effect-slide effect-spin"
+              data-slide-y="-60"
+              data-rotation="180"
+              data-duration="420"
+              aria-label="Slide and spin on click"
+            ></div>
+            <h3>Slide + Spin</h3>
+            <p><code>effect-slide effect-spin</code></p>
+          </article>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

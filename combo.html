@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Combo Motion | Square Motion Lab</title>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <p class="eyebrow">Combo Page</p>
+        <h1>Combine effects without changing the core setup.</h1>
+        <p class="intro">
+          This page is just a small composition playground. Stack multiple
+          effect classes on the same square and let the shared initializer do
+          the rest.
+        </p>
+        <pre class="snippet"><code>&lt;div class="motion-box animate-on-click effect-slide effect-grow effect-spin"
+  data-slide-x="90"
+  data-scale="1.25"
+  data-rotation="180"&gt;&lt;/div&gt;</code></pre>
+      </section>
+
+      <section class="demo-section">
+        <div class="section-heading">
+          <p class="section-label">Combinations</p>
+          <h2>One square, multiple effects.</h2>
+        </div>
+
+        <div class="demo-grid">
+          <article class="demo-card">
+            <div
+              class="motion-box tone-coral animate-on-click effect-slide effect-grow"
+              data-slide-x="100"
+              data-scale="1.2"
+              data-duration="360"
+              aria-label="Slide and grow on click"
+            ></div>
+            <h3>Click Combo</h3>
+            <p><code>effect-slide effect-grow</code></p>
+          </article>
+
+          <article class="demo-card">
+            <div
+              class="motion-box tone-sky animate-on-click effect-slide effect-spin"
+              data-slide-y="-45"
+              data-rotation="180"
+              data-duration="420"
+              aria-label="Slide and spin on click"
+            ></div>
+            <h3>Click Twist</h3>
+            <p><code>effect-slide effect-spin</code></p>
+          </article>
+
+          <article class="demo-card">
+            <div
+              class="motion-box tone-plum animate-on-scroll effect-grow effect-spin"
+              data-scale="1.2"
+              data-rotation="450"
+              data-duration="720"
+              data-scroll-threshold="0.5"
+              aria-label="Grow and spin on scroll"
+            ></div>
+            <h3>Scroll Combo</h3>
+            <p><code>effect-grow effect-spin</code></p>
+          </article>
+
+          <article class="demo-card">
+            <div
+              class="motion-box tone-gold animate-on-scroll effect-slide effect-grow effect-spin"
+              data-slide-x="70"
+              data-scale="1.15"
+              data-rotation="360"
+              data-duration="680"
+              data-scroll-once="true"
+              data-scroll-threshold="0.5"
+              aria-label="Slide, grow, and spin on scroll"
+            ></div>
+            <h3>Full Stack</h3>
+            <p><code>effect-slide effect-grow effect-spin</code></p>
+          </article>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll Motion | Square Motion Lab</title>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <p class="eyebrow">Scroll Page</p>
+        <h1>Scroll-triggered motion with the same small API.</h1>
+        <p class="intro">
+          These squares animate when they enter view. You can keep the motion
+          repeatable or let it run once with a small data attribute.
+        </p>
+        <pre class="snippet"><code>&lt;div class="motion-box animate-on-scroll effect-grow"
+  data-scale="1.4"
+  data-scroll-threshold="0.55"
+  data-scroll-once="true"&gt;&lt;/div&gt;</code></pre>
+      </section>
+
+      <section class="demo-section">
+        <div class="section-heading">
+          <p class="section-label">Entrance Motion</p>
+          <h2>Scroll down into the grid.</h2>
+        </div>
+
+        <div class="demo-grid">
+          <article class="demo-card">
+            <div
+              class="motion-box tone-gold animate-on-scroll effect-slide"
+              data-slide-x="140"
+              data-duration="450"
+              data-scroll-threshold="0.5"
+              aria-label="Slide on scroll"
+            ></div>
+            <h3>Slide In</h3>
+            <p><code>animate-on-scroll effect-slide</code></p>
+          </article>
+
+          <article class="demo-card">
+            <div
+              class="motion-box tone-olive animate-on-scroll effect-grow"
+              data-scale="1.4"
+              data-duration="280"
+              data-scroll-threshold="0.5"
+              aria-label="Grow on scroll"
+            ></div>
+            <h3>Scale Up</h3>
+            <p><code>data-scale="1.4"</code></p>
+          </article>
+
+          <article class="demo-card">
+            <div
+              class="motion-box tone-berry animate-on-scroll effect-spin"
+              data-rotation="360"
+              data-duration="650"
+              data-scroll-threshold="0.5"
+              aria-label="Spin on scroll"
+            ></div>
+            <h3>Full Spin</h3>
+            <p><code>data-rotation="360"</code></p>
+          </article>
+
+          <article class="demo-card">
+            <div
+              class="motion-box tone-ink animate-on-scroll effect-slide effect-grow"
+              data-slide-y="-50"
+              data-scale="1.2"
+              data-duration="500"
+              data-scroll-once="true"
+              data-scroll-threshold="0.5"
+              aria-label="Slide and grow once on scroll"
+            ></div>
+            <h3>Run Once</h3>
+            <p><code>data-scroll-once="true"</code></p>
+          </article>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
