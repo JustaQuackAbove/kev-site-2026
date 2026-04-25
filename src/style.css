@@ -125,24 +125,36 @@ h3 {
   color: #444032;
 }
 
+.effect-target,
 .motion-box {
   --move-x: 0px;
   --move-y: 0px;
   --scale: 1;
   --rotation: 0deg;
+  --anchor-x: 0px;
+  --anchor-y: 0px;
   --animation-duration: 450ms;
   --animation-easing: ease;
+  transform:
+    translate(var(--anchor-x), var(--anchor-y))
+    translate(var(--move-x), var(--move-y))
+    scale(var(--scale))
+    rotate(var(--rotation));
+  transform-origin: center;
+}
 
+.effect-target {
+  transition: transform var(--animation-duration) var(--animation-easing);
+  will-change: transform;
+}
+
+.motion-box {
   width: min(100%, 8rem);
   aspect-ratio: 1;
   border: 0;
   border-radius: 1.4rem;
   box-shadow: 0 16px 30px rgba(30, 28, 24, 0.12);
   cursor: pointer;
-  transform:
-    translate(var(--move-x), var(--move-y))
-    scale(var(--scale))
-    rotate(var(--rotation));
   transition:
     transform var(--animation-duration) var(--animation-easing),
     box-shadow 180ms ease;

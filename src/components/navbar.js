@@ -4,6 +4,7 @@ const navLinks = [
   { href: './scroll.html', label: 'Scroll' },
   { href: './combo.html', label: 'Combo' },
   { href: './scene.html', label: 'Scene' },
+  { href: './diorama.html', label: 'Diorama' },
 ]
 
 function getCurrentPage() {

@@ -1,13 +1,5 @@
 import { applyEffectProgress } from './effects/index.js'
 
-function readTime(value, fallback = '450ms') {
-  if (!value) {
-    return fallback
-  }
-
-  return /^\d+(\.\d+)?$/.test(value) ? `${value}ms` : value
-}
-
 function readThreshold(value, fallback = 0.35) {
   const threshold = Number(value)
 
@@ -18,13 +10,7 @@ function readThreshold(value, fallback = 0.35) {
   return Math.min(1, Math.max(0, threshold))
 }
 
-function setAnimationOptions(element) {
-  element.style.setProperty('--animation-duration', readTime(element.dataset.duration))
-  element.style.setProperty('--animation-easing', element.dataset.easing ?? 'ease')
-}
-
 function setupClickTrigger(element) {
-  setAnimationOptions(element)
   applyEffectProgress(element, 0)
 
   if (!element.hasAttribute('tabindex')) {
@@ -51,7 +37,6 @@ function setupClickTrigger(element) {
 }
 
 function setupScrollTrigger(element) {
-  setAnimationOptions(element)
   applyEffectProgress(element, 0)
 
   const threshold = readThreshold(element.dataset.scrollThreshold, 0.35)

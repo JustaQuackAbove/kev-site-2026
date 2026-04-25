@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diorama Motion | Square Motion Lab</title>
+  </head>
+  <body data-diorama data-page-count="3">
+    <main class="page diorama-page">
+      <section class="hero">
+        <p class="eyebrow">Diorama Page</p>
+        <h1>Each object now has an explicit page position.</h1>
+        <p class="intro">
+          The wrapper decides where an object lives on each page. The child
+          still uses the same grow and spin values, so page transitions are
+          easier to tune without losing the simple class-and-data-attribute API.
+        </p>
+        <pre class="snippet"><code>&lt;div class="scene-node effect-slide" data-page-1-x="14%" data-page-1-y="28%"&gt;
+  &lt;div class="diorama-sun effect-target effect-grow" data-page-1-scale="0.92"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </section>
+
+      <section class="demo-section diorama-section">
+        <div class="section-heading">
+          <p class="section-label">Positioned Page States</p>
+          <h2>The same objects move to explicit coordinates on every page.</h2>
+        </div>
+
+        <div class="diorama-shell">
+          <div class="diorama-stage" aria-label="A layered diorama scene driven by explicit page positions">
+            <div class="diorama-background layer layer-bg"></div>
+            <div class="diorama-grid layer layer-bg"></div>
+            <div class="diorama-haze layer layer-bg"></div>
+            <div class="diorama-coordinate-label coord-top-left">0%, 0%</div>
+            <div class="diorama-coordinate-label coord-top-right">100%, 0%</div>
+            <div class="diorama-coordinate-label coord-center">50%, 50%</div>
+            <div class="diorama-coordinate-label coord-bottom-left">0%, 100%</div>
+            <div class="diorama-coordinate-label coord-bottom-right">100%, 100%</div>
+
+            <div class="diorama-hill diorama-hill-back-left layer layer-bg"></div>
+            <div class="diorama-hill diorama-hill-back-right layer layer-bg"></div>
+            <div class="diorama-hill diorama-hill-mid layer layer-mg"></div>
+            <div class="diorama-ground layer layer-fg"></div>
+
+            <div
+              class="scene-node effect-slide layer layer-bg"
+              data-anchor="center"
+              data-duration="620"
+              data-page-1-x="13%"
+              data-page-1-y="31%"
+              data-page-2-x="48%"
+              data-page-2-y="16%"
+              data-page-3-x="84%"
+              data-page-3-y="28%"
+            >
+              <div
+                class="diorama-sun effect-target effect-grow"
+                data-page-1-scale="0.92"
+                data-page-2-scale="1.05"
+                data-page-3-scale="0.95"
+              ></div>
+            </div>
+
+            <div
+              class="scene-node effect-slide layer layer-bg"
+              data-anchor="center"
+              data-duration="520"
+              data-page-1-x="25%"
+              data-page-1-y="18%"
+              data-page-2-x="35%"
+              data-page-2-y="23%"
+              data-page-3-x="50%"
+              data-page-3-y="18%"
+            >
+              <div
+                class="diorama-cloud cloud-a effect-target effect-grow"
+                data-page-1-scale="1"
+                data-page-2-scale="1.08"
+                data-page-3-scale="0.98"
+              ></div>
+            </div>
+
+            <div
+              class="scene-node effect-slide layer layer-bg"
+              data-anchor="center"
+              data-duration="540"
+              data-page-1-x="65%"
+              data-page-1-y="24%"
+              data-page-2-x="75%"
+              data-page-2-y="18%"
+              data-page-3-x="82%"
+              data-page-3-y="26%"
+            >
+              <div
+                class="diorama-cloud cloud-b effect-target effect-grow"
+                data-page-1-scale="0.84"
+                data-page-2-scale="0.94"
+                data-page-3-scale="0.82"
+              ></div>
+            </div>
+
+            <div
+              class="scene-node effect-slide layer layer-bg"
+              data-anchor="center"
+              data-duration="560"
+              data-page-1-x="88%"
+              data-page-1-y="-6%"
+              data-page-2-x="58%"
+              data-page-2-y="30%"
+              data-page-3-x="31%"
+              data-page-3-y="24%"
+            >
+              <div
+                class="diorama-cloud cloud-c effect-target effect-grow"
+                data-page-1-scale="0.74"
+                data-page-2-scale="0.92"
+                data-page-3-scale="0.84"
+              ></div>
+            </div>
+
+            <div
+              class="scene-node effect-slide layer layer-mg"
+              data-anchor="center"
+              data-duration="560"
+              data-page-1-x="50%"
+              data-page-1-y="86%"
+              data-page-2-x="50%"
+              data-page-2-y="78%"
+              data-page-3-x="50%"
+              data-page-3-y="74%"
+            >
+              <div
+                class="diorama-field effect-target effect-grow"
+                data-page-1-scale="0.78"
+                data-page-2-scale="1"
+                data-page-3-scale="1.05"
+              ></div>
+            </div>
+
+            <div
+              class="scene-node effect-slide layer layer-fg"
+              data-anchor="bottom-center"
+              data-duration="520"
+              data-page-1-x="14%"
+              data-page-1-y="97%"
+              data-page-2-x="16%"
+              data-page-2-y="91%"
+              data-page-3-x="13%"
+              data-page-3-y="88%"
+            >
+              <div
+                class="diorama-grass grass-a effect-target effect-grow"
+                data-page-1-scale="0.8"
+                data-page-2-scale="0.92"
+                data-page-3-scale="1"
+              ></div>
+            </div>
+
+            <div
+              class="scene-node effect-slide layer layer-fg"
+              data-anchor="bottom-center"
+              data-duration="560"
+              data-page-1-x="35%"
+              data-page-1-y="105%"
+              data-page-2-x="36%"
+              data-page-2-y="92%"
+              data-page-3-x="35%"
+              data-page-3-y="87%"
+            >
+              <div
+                class="diorama-grass grass-b effect-target effect-grow"
+                data-page-1-scale="0.34"
+                data-page-2-scale="0.92"
+                data-page-3-scale="1.12"
+              ></div>
+            </div>
+
+            <div
+              class="scene-node effect-slide layer layer-fg"
+              data-anchor="bottom-center"
+              data-duration="560"
+              data-page-1-x="64%"
+              data-page-1-y="105%"
+              data-page-2-x="64%"
+              data-page-2-y="93%"
+              data-page-3-x="66%"
+              data-page-3-y="88%"
+            >
+              <div
+                class="diorama-grass grass-c effect-target effect-grow"
+                data-page-1-scale="0.28"
+                data-page-2-scale="0.84"
+                data-page-3-scale="1.05"
+              ></div>
+            </div>
+
+            <div
+              class="scene-node effect-slide layer layer-fg"
+              data-anchor="bottom-center"
+              data-duration="540"
+              data-page-1-x="86%"
+              data-page-1-y="98%"
+              data-page-2-x="84%"
+              data-page-2-y="91%"
+              data-page-3-x="88%"
+              data-page-3-y="88%"
+            >
+              <div
+                class="diorama-grass grass-d effect-target effect-grow"
+                data-page-1-scale="0.72"
+                data-page-2-scale="0.9"
+                data-page-3-scale="1"
+              ></div>
+            </div>
+
+            <div
+              class="scene-node effect-slide layer layer-fg"
+              data-anchor="bottom-center"
+              data-duration="520"
+              data-page-1-x="43%"
+              data-page-1-y="111%"
+              data-page-2-x="42%"
+              data-page-2-y="87%"
+              data-page-3-x="44%"
+              data-page-3-y="84%"
+            >
+              <div
+                class="diorama-bloom effect-target effect-grow"
+                data-page-1-scale="0.12"
+                data-page-2-scale="1"
+                data-page-3-scale="1.08"
+              ></div>
+            </div>
+
+            <div
+              class="scene-node effect-slide layer layer-fg"
+              data-anchor="bottom-center"
+              data-duration="560"
+              data-page-1-x="58%"
+              data-page-1-y="112%"
+              data-page-2-x="59%"
+              data-page-2-y="94%"
+              data-page-3-x="57%"
+              data-page-3-y="86%"
+            >
+              <div
+                class="diorama-bloom effect-target effect-grow"
+                data-page-1-scale="0.1"
+                data-page-2-scale="0.62"
+                data-page-3-scale="1"
+              ></div>
+            </div>
+
+            <div
+              class="scene-node effect-slide layer layer-fg"
+              data-anchor="bottom-center"
+              data-duration="580"
+              data-page-1-x="79%"
+              data-page-1-y="114%"
+              data-page-2-x="78%"
+              data-page-2-y="100%"
+              data-page-3-x="78%"
+              data-page-3-y="85%"
+            >
+              <div
+                class="diorama-marker effect-target effect-grow"
+                data-page-1-scale="0.18"
+                data-page-2-scale="0.44"
+                data-page-3-scale="1"
+              ></div>
+            </div>
+
+            <div
+              class="scene-node effect-slide layer layer-fg"
+              data-anchor="top-left"
+              data-duration="420"
+              data-page-1-x="46%"
+              data-page-1-y="54%"
+              data-page-2-x="8%"
+              data-page-2-y="48%"
+              data-page-3-x="58%"
+              data-page-3-y="62%"
+            >
+              <p
+                class="diorama-line effect-target effect-grow"
+                data-page-1-scale="0.94"
+                data-page-2-scale="1"
+                data-page-3-scale="1.03"
+                data-page-1-text="Clouds drop in first, then the field starts to rise."
+                data-page-2-text="Now the same meadow objects keep moving instead of reloading."
+                data-page-3-text="Jumping to page 3 sends every object straight to its page 3 position."
+              ></p>
+            </div>
+
+            <div
+              class="scene-node effect-slide layer layer-fg"
+              data-anchor="top-left"
+              data-duration="470"
+              data-page-1-x="5%"
+              data-page-1-y="62%"
+              data-page-2-x="63%"
+              data-page-2-y="8%"
+              data-page-3-x="7%"
+              data-page-3-y="8%"
+            >
+              <article
+                class="diorama-copy effect-target effect-grow"
+                data-page-1-scale="0.98"
+                data-page-2-scale="1"
+                data-page-3-scale="1.02"
+              >
+                <p
+                  class="diorama-kicker"
+                  data-page-1-text="Page 1"
+                  data-page-2-text="Page 2"
+                  data-page-3-text="Page 3"
+                ></p>
+
+                <h3
+                  data-page-1-text="First light settles in."
+                  data-page-2-text="The scene fills instead of resetting."
+                  data-page-3-text="The final state is just the next target."
+                ></h3>
+
+                <p
+                  data-page-1-text="The sun starts low on the left while the first clouds and grass push into place."
+                  data-page-2-text="The same sun, clouds, field, and grass keep their identity and move into new positions."
+                  data-page-3-text="Going from page 1 to page 3 now moves each object straight to its page 3 coordinates."
+                ></p>
+              </article>
+            </div>
+          </div>
+
+          <aside class="diorama-panel">
+            <p class="diorama-state" data-diorama-state></p>
+
+            <div class="diorama-controls" aria-label="Diorama controls">
+              <button type="button" class="diorama-button" data-advance="prev">Prev</button>
+              <button type="button" class="diorama-button diorama-page-button" data-goto="1">Page 1</button>
+              <button type="button" class="diorama-button diorama-page-button" data-goto="2">Page 2</button>
+              <button type="button" class="diorama-button diorama-page-button" data-goto="3">Page 3</button>
+              <button type="button" class="diorama-button" data-advance="next">Next</button>
+            </div>
+
+            <div class="diorama-notes">
+              <p>
+                Page positions now live directly on the wrapper:
+                <code>data-page-1-x</code>, <code>data-page-1-y</code>,
+                <code>data-page-2-x</code>, and so on.
+              </p>
+              <p>
+                The child element still uses the existing effect classes for
+                visual changes like scale, while the wrapper slides to the next
+                coordinate.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -29,6 +29,14 @@ function injectPageStyles() {
           })
         }
 
+        if (currentPage === 'diorama.html') {
+          tags.push({
+            tag: 'link',
+            attrs: { rel: 'stylesheet', href: '/src/diorama/diorama.css' },
+            injectTo: 'head',
+          })
+        }
+
         return { tags }
       },
     },
@@ -45,6 +53,7 @@ export default defineConfig({
         scroll: resolve(__dirname, 'scroll.html'),
         combo: resolve(__dirname, 'combo.html'),
         scene: resolve(__dirname, 'scene.html'),
+        diorama: resolve(__dirname, 'diorama.html'),
       },
     },
   },

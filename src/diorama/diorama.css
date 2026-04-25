@@ -1,0 +1,541 @@
+:root {
+  --layer-bg: 1;
+  --layer-mg: 10;
+  --layer-fg: 20;
+}
+
+.diorama-page {
+  padding-bottom: 5rem;
+}
+
+.diorama-section {
+  gap: 1.5rem;
+}
+
+.diorama-shell {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.diorama-stage {
+  position: relative;
+  height: clamp(38rem, 72svh, 52rem);
+  overflow: hidden;
+  border: 1px solid rgba(20, 24, 42, 0.12);
+  border-radius: 2rem;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255, 223, 157, 0.24), transparent 18%),
+    radial-gradient(circle at 78% 20%, rgba(141, 204, 255, 0.18), transparent 22%),
+    linear-gradient(180deg, #d7ecff 0%, #b6d4ff 36%, #8dcbb8 68%, #5e8c54 100%);
+  box-shadow: 0 28px 55px rgba(19, 25, 44, 0.18);
+  isolation: isolate;
+}
+
+.scene-node {
+  --position-x: 50%;
+  --position-y: 50%;
+  --animation-duration: 520ms;
+  --animation-easing: ease;
+
+  position: absolute;
+  left: var(--position-x);
+  top: var(--position-y);
+  width: 0;
+  height: 0;
+  transition:
+    left var(--animation-duration) var(--animation-easing),
+    top var(--animation-duration) var(--animation-easing);
+}
+
+.scene-node > * {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.scene-node[data-anchor='center'] > * {
+  --anchor-x: -50%;
+  --anchor-y: -50%;
+}
+
+.scene-node[data-anchor='top-center'] > * {
+  --anchor-x: -50%;
+  --anchor-y: 0px;
+}
+
+.scene-node[data-anchor='bottom-center'] > * {
+  --anchor-x: -50%;
+  --anchor-y: -100%;
+}
+
+.scene-node[data-anchor='top-left'] > * {
+  --anchor-x: 0px;
+  --anchor-y: 0px;
+}
+
+.diorama-stage .effect-target {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition:
+    transform var(--animation-duration) var(--animation-easing),
+    opacity 220ms ease;
+}
+
+.diorama-stage .effect-target.is-active {
+  opacity: 1;
+}
+
+.layer {
+  position: absolute;
+}
+
+.layer-bg {
+  z-index: var(--layer-bg);
+}
+
+.layer-mg {
+  z-index: var(--layer-mg);
+}
+
+.layer-fg {
+  z-index: var(--layer-fg);
+}
+
+.diorama-background,
+.diorama-grid,
+.diorama-haze {
+  inset: 0;
+}
+
+.diorama-background {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28), transparent 26%),
+    linear-gradient(180deg, transparent 52%, rgba(90, 144, 95, 0.12) 70%, rgba(35, 66, 34, 0.18) 100%);
+}
+
+.diorama-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 5% 5%;
+  opacity: 0.28;
+  mask-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.95) 24%, rgba(0, 0, 0, 0.95) 80%, transparent);
+}
+
+.diorama-coordinate-label {
+  position: absolute;
+  z-index: 35;
+  pointer-events: none;
+  padding: 0.25rem 0.45rem;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  background: rgba(9, 20, 32, 0.3);
+  color: rgba(244, 247, 251, 0.72);
+  font-family: "Consolas", "SFMono-Regular", monospace;
+  font-size: 0.72rem;
+  line-height: 1;
+  backdrop-filter: blur(12px);
+}
+
+.coord-top-left {
+  top: 0.85rem;
+  left: 0.85rem;
+}
+
+.coord-top-right {
+  top: 0.85rem;
+  right: 0.85rem;
+}
+
+.coord-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.coord-bottom-left {
+  bottom: 0.85rem;
+  left: 0.85rem;
+}
+
+.coord-bottom-right {
+  right: 0.85rem;
+  bottom: 0.85rem;
+}
+
+.diorama-haze {
+  background:
+    radial-gradient(circle at 30% 65%, rgba(255, 255, 255, 0.35), transparent 22%),
+    radial-gradient(circle at 72% 58%, rgba(255, 255, 255, 0.22), transparent 20%);
+  filter: blur(26px);
+  opacity: 0.6;
+}
+
+.diorama-hill {
+  position: absolute;
+  bottom: -18%;
+  border-radius: 50%;
+}
+
+.diorama-hill-back-left {
+  left: -12%;
+  width: 72%;
+  height: 46%;
+  background: linear-gradient(180deg, #7bb08a 0%, #4d7a53 100%);
+}
+
+.diorama-hill-back-right {
+  right: -10%;
+  bottom: -12%;
+  width: 62%;
+  height: 38%;
+  background: linear-gradient(180deg, #90c29a 0%, #557a58 100%);
+}
+
+.diorama-hill-mid {
+  left: 9%;
+  bottom: -8%;
+  width: 82%;
+  height: 28%;
+  background: linear-gradient(180deg, #6fa06d 0%, #32572f 100%);
+  box-shadow: 0 -12px 24px rgba(255, 255, 255, 0.08) inset;
+}
+
+.diorama-ground {
+  left: -6%;
+  right: -6%;
+  bottom: -24%;
+  height: 42%;
+  border-radius: 50%;
+  background:
+    linear-gradient(180deg, rgba(203, 232, 166, 0.85), transparent 14%),
+    linear-gradient(180deg, #6ea653 0%, #2c4c25 100%);
+  overflow: hidden;
+}
+
+.diorama-ground::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.08) 0,
+      rgba(255, 255, 255, 0.08) 3px,
+      transparent 3px,
+      transparent 16px
+    );
+  opacity: 0.35;
+}
+
+.diorama-sun {
+  width: clamp(5.5rem, 9vw, 8rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 32%, #fff7d3 0%, #ffd774 42%, #f79837 100%);
+  box-shadow:
+    0 0 48px rgba(255, 198, 96, 0.4),
+    0 0 90px rgba(255, 218, 156, 0.22);
+}
+
+.diorama-sun::after {
+  content: '';
+  position: absolute;
+  inset: -22%;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 244, 205, 0.35);
+}
+
+.diorama-cloud {
+  width: var(--cloud-width, 10rem);
+  height: var(--cloud-height, 3.6rem);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(240, 248, 255, 0.82));
+  box-shadow: 0 12px 28px rgba(73, 111, 138, 0.12);
+}
+
+.diorama-cloud::before,
+.diorama-cloud::after {
+  content: '';
+  position: absolute;
+  bottom: 0.5rem;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.diorama-cloud::before {
+  left: 0.75rem;
+  width: 42%;
+  height: 125%;
+}
+
+.diorama-cloud::after {
+  right: 0.9rem;
+  width: 50%;
+  height: 145%;
+}
+
+.cloud-a {
+  --cloud-width: 11rem;
+}
+
+.cloud-b {
+  --cloud-width: 8.5rem;
+}
+
+.cloud-c {
+  --cloud-width: 7.5rem;
+}
+
+.diorama-field {
+  width: min(62rem, 76vw);
+  height: 5.5rem;
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(229, 247, 174, 0.92), rgba(98, 164, 75, 0.88)),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12), transparent 35%);
+  box-shadow:
+    inset 0 6px 18px rgba(255, 255, 255, 0.16),
+    0 14px 28px rgba(35, 66, 34, 0.12);
+}
+
+.diorama-grass {
+  width: var(--grass-width, 10rem);
+  height: var(--grass-height, 8rem);
+  background: linear-gradient(180deg, #8fda67 0%, #35672a 100%);
+  clip-path: polygon(
+    0% 100%,
+    0% 44%,
+    6% 68%,
+    12% 18%,
+    18% 72%,
+    26% 8%,
+    34% 74%,
+    42% 28%,
+    49% 74%,
+    58% 10%,
+    66% 76%,
+    76% 20%,
+    84% 74%,
+    92% 42%,
+    100% 100%
+  );
+  filter: drop-shadow(0 10px 16px rgba(26, 60, 22, 0.18));
+  transform-origin: center bottom;
+}
+
+.grass-a {
+  --grass-width: 12rem;
+}
+
+.grass-b {
+  --grass-width: 11rem;
+}
+
+.grass-c {
+  --grass-width: 12rem;
+}
+
+.grass-d {
+  --grass-width: 9rem;
+}
+
+.diorama-bloom {
+  width: 0.85rem;
+  height: 5.75rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #8bd158 0%, #3c6a2d 100%);
+  transform-origin: center bottom;
+}
+
+.diorama-bloom::before,
+.diorama-bloom::after {
+  content: '';
+  position: absolute;
+  top: -0.65rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  box-shadow: inset 0 -2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.diorama-bloom::before {
+  left: -0.55rem;
+  background: radial-gradient(circle at 35% 35%, #fff7d5 0%, #f8c754 58%, #f19f36 100%);
+}
+
+.diorama-bloom::after {
+  right: -0.55rem;
+  background: radial-gradient(circle at 35% 35%, #fff3ff 0%, #ff8cb8 56%, #ff5d7f 100%);
+}
+
+.diorama-marker {
+  width: 0.95rem;
+  height: 8rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f2deae 0%, #7f5f36 100%);
+  transform-origin: center bottom;
+}
+
+.diorama-marker::before {
+  content: '';
+  position: absolute;
+  top: 0.7rem;
+  left: -2.2rem;
+  width: 4.9rem;
+  height: 2rem;
+  border-radius: 1rem;
+  background: linear-gradient(180deg, #fff4d4 0%, #f3c160 100%);
+  box-shadow: 0 8px 18px rgba(47, 33, 10, 0.18);
+}
+
+.diorama-line {
+  width: min(23rem, calc(100vw - 3rem));
+  margin: 0;
+  padding: 0.65rem 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(9, 20, 32, 0.44);
+  box-shadow: 0 10px 24px rgba(7, 13, 26, 0.18);
+  color: #f4f7fb;
+  font-size: 0.92rem;
+  letter-spacing: 0;
+  backdrop-filter: blur(16px);
+}
+
+.diorama-copy {
+  display: grid;
+  gap: 0.7rem;
+  width: min(20rem, calc(100vw - 3rem));
+  padding: 1rem 1.15rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 1.35rem;
+  background: rgba(7, 13, 26, 0.48);
+  box-shadow: 0 16px 34px rgba(7, 13, 26, 0.24);
+  backdrop-filter: blur(18px);
+  color: #f5f7ff;
+}
+
+.diorama-kicker {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(233, 240, 255, 0.76);
+}
+
+.diorama-copy h3,
+.diorama-copy p {
+  margin: 0;
+}
+
+.diorama-copy h3 {
+  font-size: 2rem;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.diorama-copy p:last-child {
+  color: rgba(233, 240, 255, 0.8);
+}
+
+.diorama-panel {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem;
+  border: 1px solid rgba(30, 28, 24, 0.08);
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: 0 22px 45px rgba(45, 39, 30, 0.08);
+  backdrop-filter: blur(16px);
+}
+
+.diorama-state {
+  margin: 0;
+  color: #444032;
+  font-family: "Consolas", "SFMono-Regular", monospace;
+  font-size: 0.95rem;
+}
+
+.diorama-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.diorama-button {
+  padding: 0.65rem 0.95rem;
+  border: 1px solid rgba(30, 28, 24, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  color: #1e1c18;
+  font: inherit;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(45, 39, 30, 0);
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease;
+}
+
+.diorama-button:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(30, 28, 24, 0.28);
+  box-shadow: 0 10px 20px rgba(45, 39, 30, 0.1);
+}
+
+.diorama-button:focus-visible {
+  outline: 3px solid #0f62d6;
+  outline-offset: 3px;
+}
+
+.diorama-page-button.is-current {
+  background: #1e1c18;
+  color: #f9f4ec;
+  border-color: #1e1c18;
+  box-shadow: 0 14px 26px rgba(30, 28, 24, 0.2);
+}
+
+.diorama-page-button.is-current:hover {
+  background: #1e1c18;
+  border-color: #1e1c18;
+  box-shadow: 0 16px 30px rgba(30, 28, 24, 0.24);
+}
+
+.diorama-notes {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.diorama-notes p {
+  color: #625d52;
+}
+
+.diorama-notes code {
+  color: #444032;
+}
+
+@media (max-width: 700px) {
+  .diorama-page {
+    padding-bottom: 3rem;
+  }
+
+  .diorama-stage {
+    height: 38rem;
+  }
+
+  .diorama-copy h3 {
+    font-size: 1.55rem;
+  }
+
+  .diorama-panel {
+    grid-template-columns: 1fr;
+  }
+}
